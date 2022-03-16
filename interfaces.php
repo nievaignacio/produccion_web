@@ -1,33 +1,33 @@
 <?php
 
-interface desplazable {
+interface avanzable {
     public function avanzar();
     public function retroceder();
 }
 
 
-class Auto implements desplazable {
+class Auto implements avanzable {
 
     var $modelo;
 
     public function avanzar(){
-        echo "El Auto avanza por la calle\n";
+        echo "El Auto avanza\n";
     }
     public function retroceder(){
-        echo "El Auto retrocede por la calle\n";
+        echo "El Auto va en reversa\n";
     }
 
 }
 
-class Persona implements desplazable {
+class Libro implements avanzable {
 
-    var $nombre;
+    var $titulo;
     
     public function avanzar(){
-        echo "La Persona avanza por la vereda\n";
+        echo "Avanza pargina\n";
     }
     public function retroceder(){
-        echo "La Persona retrocede por la vereda\n";
+        echo "Retrocede pagina\n";
     }
 }
 
@@ -38,9 +38,10 @@ class Edificio{
 }
 
 
+// Solo para ejemplo
 function avanzar($obj){
 
-    if($obj instanceof desplazable){
+    if($obj instanceof avanzable){
         $obj->avanzar();
     }else{
         echo "Un ".get_class($obj)." no avanza.";
@@ -49,7 +50,7 @@ function avanzar($obj){
 }
 
 avanzar(new Auto());
-avanzar(new Persona());
+avanzar(new Libro());
 avanzar(new Edificio());
 
 
