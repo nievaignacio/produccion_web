@@ -13,13 +13,12 @@ class Persona {
         $this->apellido = $apellido;
     }
 
-    
     function getNombreCompleto(){
         return $this->nombre." ".$this->apellido;
     }
     
     function __destruct(){
-        echo "\n";
+        echo "<br>";
         echo "Objeto ".get_class($this)." destruido";
     }    
     
@@ -57,7 +56,7 @@ class Alumno extends Persona{
 $alumno  = new Alumno("Juan","Perez");
 $alumno->notas = [10,8,9,5];
 
-echo "\n";
+echo "<br>";
 echo "Alumno: ". $alumno->getNombreCompleto() ." Promedio: ". $alumno->getPromedio();
 
 
@@ -80,33 +79,8 @@ class Profesor extends Persona{
 
 $profesor = new Profesor("Ignaico","Nieva","Produccion Web");
 
-echo "\n";
+echo "<br>";
 echo "Profesor: ". $profesor->getNombreCompleto() ." Materia: ". $profesor->materia;
 
 
 //Metodo destructor...
-
-
-// Metodos y propiedades estaticas
-
-class Prueba{
-    
-    static $text = "Hola Mundo";
-    
-    static function getText(){
-        return self::$text;
-    }
-    
-}
-
-echo "\n";
-echo Prueba::getText(); 
-
-
-
-
-
-
-
-
-

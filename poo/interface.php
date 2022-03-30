@@ -24,10 +24,10 @@ class Libro implements avanzable {
     var $titulo;
     
     public function avanzar(){
-        echo "Avanza pargina\n";
+        echo "Avanza pargina del libro\n";
     }
     public function retroceder(){
-        echo "Retrocede pagina\n";
+        echo "Retrocede pagina del libro\n";
     }
 }
 
