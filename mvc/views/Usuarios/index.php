@@ -11,16 +11,30 @@
 
 <body>
 
-    <div class="container">
 
-        <h1>Lista de Usuarios</h1>
+    <div class="p-4 text-white bg-secondary">
+        <div class="container">
+            <h1>Lista de Usuarios</h1>
+        </div>
+    </div>
+
+    
+    <div class="container py-4">
+
+
+        <p>
+            <a href="?c=usuarios&a=agregar" class="btn btn-primary">Agregar</a>
+        </p>
+
+
 
         <table class="table">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>id</th>
                     <th>usuario</th>
                     <th>email</th>
+                    <th>actions</th>
                 </tr>
             </thead>
 
@@ -33,6 +47,7 @@
                         <td><?php echo $usuario->id; ?></td>
                         <td><?php echo $usuario->name; ?></td>
                         <td><?php echo $usuario->email; ?></td>
+                        <td><a href="?c=usuarios&a=eliminar&id=<?php echo $usuario->id; ?>" class="btn btn-danger">Eliminar</a></td>
                     </tr>
                 <?php
                 }
