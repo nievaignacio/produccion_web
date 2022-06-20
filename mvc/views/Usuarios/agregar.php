@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+ 
+            <h1>Agregar Usuario</h1>
+ 
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <title>Usuarios</title>
-</head>
 
-<body>
+    <div class="container py-4">
 
-    <div class="container">
+        <form method="POST" enctype="multipart/form-data">
 
-        <h1>Agregar usuario</h1>
-
-        <form method="POST">
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="name" class="form-control" id="name"  placeholder="Nombre">
-        
+            <div class="form-group py-2">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre">
             </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div class="form-group py-2">
+                <label for="email">email</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="email">
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <div class="form-group py-2">
+                <label for="password">password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            
+            <div class="py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+
         </form>
 
     </div>
