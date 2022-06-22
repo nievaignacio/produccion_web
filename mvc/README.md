@@ -1,3 +1,5 @@
+Produccion Web    
+
 Entrega 2
 
 Modelo Usuario 
@@ -5,7 +7,7 @@ Login Admnistrador
 
 Clase final
 
-Modelo Orden de compra
 Regristro de clientes
+Orden de compra
 Login de clientes
 

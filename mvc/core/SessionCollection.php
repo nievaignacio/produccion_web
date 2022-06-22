@@ -25,24 +25,27 @@ class SessionCollection extends Collection
     public static function getAll(){
 		if(!isset($_SESSION))
            session_start();
-		if(isset($_SESSION[self::getCollection()]))
-			return $_SESSION[self::getCollection()];
-		else
-			return [];
+		// if(isset($_SESSION[self::getCollection()]))
+		// 	return $_SESSION[self::getCollection()];
+		// else
+		// 	return [];
+		return $_SESSION[self::getCollection()] ?? [];
 	}
 
 	public static function getById($id){
 		if(!isset($_SESSION))
 		session_start();
-		if(isset($_SESSION[self::getCollection()][$id]))
-			return $_SESSION[self::getCollection()][$id];
-		else
-			return null;
+		// if(isset($_SESSION[self::getCollection()][$id]))
+		// 	return $_SESSION[self::getCollection()][$id];
+		// else
+		// 	return null;
+		return $_SESSION[self::getCollection()][$id] ?? null;
 	}
 	
 	public static function destroy(){
-		session_start();
-       	session_destroy($_SESSION[self::getCollection()]);
+		if(!isset($_SESSION))
+			session_start();
+       	unset($_SESSION[self::getCollection()]);
     }
 
 

@@ -10,13 +10,15 @@ class Usuario extends \core\DbCollection
 	public $nombre;
 	public $email;
 	public $password;
+	public $rol;
 
-	function __construct($id, $nombre, $email, $password)
+	function __construct($id, $nombre, $email, $password, $rol)
 	{
 		parent::__construct($id);
 		$this->nombre = $nombre;
 		$this->email = $email;
 		$this->password = $password;
+		$this->rol = $rol;
 	}
 
 
@@ -87,7 +89,7 @@ class Usuario extends \core\DbCollection
 		$select->execute();
 		$usuarioDb = $select->fetch();
 		if ($usuarioDb  && password_verify($password, $usuarioDb['password']))
-			$usuario = new Usuario($usuarioDb['id'], $usuarioDb['nombre'], $usuarioDb['email'], $usuarioDb['password']);
+			$usuario = new Usuario($usuarioDb['id'], $usuarioDb['nombre'], $usuarioDb['email'], $usuarioDb['password'], $usuarioDb['rol']);
 		else
 			$usuario = null;
 

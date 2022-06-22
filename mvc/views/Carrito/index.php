@@ -47,7 +47,7 @@ Vaciar Carrito </a>
         <div class="bg-light p-2 ">
 
     <p>Subtotal de la compra= $<?=$total; ?> <br>    
-    <a href="./productos/detalle/<?php echo $key; ?>" class="btn btn-primary float-end">Finalizar Compra</a>
+    <a href="./checkout" class="btn btn-primary float-end">Finalizar Compra</a>
 
     IVA (+<?=100 * IVA; ?>%) = $<?=$total * IVA;?>   <br>    
     

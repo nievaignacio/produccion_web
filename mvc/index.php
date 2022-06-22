@@ -1,16 +1,16 @@
 <?php
-use core\Router;
-use core\Auth;
-
 require_once("config.php");
 require_once("core/autoload.php");
+
+use core\Router;
+use core\Auth;
 
 //\core\ExceptionHandler::run();
  
 $guards = new Router;
 
 $guards->use('/admin.*', function(){ 
-        Auth::check();
+        Auth::isAdmin();
     });
     
 $guards->run();
@@ -27,7 +27,7 @@ $router->get('/productos/detalle/{id}', function($params){
     (new controllers\ProductosController)->detalle($params['id']); 
 });
 
-
+// carrito
 
 $router->get('/carrito', function(){ 
     (new controllers\CarritoController)->index(); 
@@ -37,6 +37,22 @@ $router->post('/carrito/agregar', function(){
     (new controllers\CarritoController)->agregar(); 
 });
 
+$router->get('/carrito/eliminar/{id}', function($params){ 
+    (new controllers\CarritoController)->eliminar($params['id']); 
+});
+
+
+$router->get('/checkout', function(){ 
+    (new controllers\CarritoController)->checkout(); 
+});
+
+
+$router->post('/checkout', function(){ 
+    (new controllers\CarritoController)->checkout(); 
+});
+
+
+// login
 
 $router->get('/usuarios/login', function(){ 
     (new controllers\UsuariosController)->login(); 
@@ -49,6 +65,20 @@ $router->post('/usuarios/login', function(){
 $router->get('/usuarios/logout', function(){ 
     (new controllers\UsuariosController)->logout(); 
 });
+
+$router->get('/usuarios/registro', function(){ 
+    (new controllers\UsuariosController)->registro(); 
+});
+
+$router->post('/usuarios/registro', function(){ 
+    (new controllers\UsuariosController)->registro(); 
+});
+
+
+$router->get('/usuarios/perfil/{id}', function($params){ 
+    Auth::check();
+   (new controllers\UsuariosController)->perfil($params["id"]); 
+}); 
 
 //admin
 

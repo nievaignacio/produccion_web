@@ -4,7 +4,7 @@ namespace core;
 
 abstract class Collection{
     
-    public $id;
+    public $id = null;
 
     function __construct($id)
 	{  

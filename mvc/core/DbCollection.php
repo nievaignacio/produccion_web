@@ -2,12 +2,12 @@
 
 namespace core;
 
-class DBCollection extends Collection{
+class DbCollection extends Collection{
     
 
     private static function getTable(){        
 
-        $table = self::getCollection()."s";
+        $table = parent::getCollection()."s";
 
         return $table;
     }
@@ -58,11 +58,14 @@ class DBCollection extends Collection{
 	{
         $columns = self::getColumns($obj);
 
-        //var_dump($columns);
+        var_dump($columns);
 
 		$db = Db::getConnect();
 		$insert = $db->prepare('INSERT INTO '.self::getTable()." VALUES (:$columns) ");
 		$insert->execute((array) $obj);
+
+        $insertObj = self::getById($db->lastInsertId());
+        return $insertObj;
 	}
      
 

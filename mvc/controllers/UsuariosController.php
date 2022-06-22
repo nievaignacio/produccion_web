@@ -4,15 +4,17 @@ namespace controllers;
 
 use \Models\Usuario;
 use core\Auth;
+use core\Controller;
+use Models\OrdenCompra;
 
-class UsuariosController
+class UsuariosController extends Controller
 {
 
     public function index()
     {
         $usuarios = Usuario::getAll();
 
-        \Render::html('Templates\adminLayout', '/usuarios/index', ["usuarios" => $usuarios]);
+        $this->render('Templates\adminLayout', '/usuarios/index', ["usuarios" => $usuarios]);
     }
 
 
@@ -28,7 +30,13 @@ class UsuariosController
 
             if ($usuario) {
                 Auth::login($usuario);
-                header("Location: " . BASE_URL . "/admin");
+
+                 if($usuario->rol == "Administrador")   
+                    $this->redirect("/admin");
+                else
+                    $this->redirect("/usuarios/perfil/".$usuario->id);
+            
+            
             } else {
                 echo 'Usuario o contraseña incorrectos.';
             }
@@ -38,24 +46,58 @@ class UsuariosController
     public function logout()
     {
         Auth::logout();
-        header("Location: " . BASE_URL . "/admin");
+        $this->redirect("/");
     }
 
+
+    public function boton(){
+
+        $usuario = Auth::getUser();
+
+        require_once("views/usuarios/boton.php");
+    }
 
 
     public function agregar()
     {
 
         if (!$_POST) {
-            \Render::html('Templates\AdminLayout', 'usuarios/agregar', []);
+            $this->render('Templates\AdminLayout', 'usuarios/agregar', []);
         } else {
 
             $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-            $usuario = new Usuario(null, $_POST['nombre'], $_POST['email'], $hash);
+            $usuario = new Usuario(null, $_POST['nombre'], $_POST['email'], $hash, 'Administrador');
             Usuario::save($usuario);
-            header("Location: " . BASE_URL . "/admin/usuarios");
+            $this->redirect("/admin/usuarios");
         }
+    }
+
+
+    public function registro()
+    {
+        if (!$_POST) {
+            $this->render('Templates\Layout', 'usuarios/agregar', []);
+        } else {
+
+            $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+            $usuario = new Usuario(null, $_POST['nombre'], $_POST['email'], $hash, 'Cliente');
+            $usuarioNuevo = Usuario::save($usuario);
+            
+            Auth::login($usuarioNuevo);
+           
+            $this->redirect("/usuarios/perfil/".$usuarioNuevo->id);
+        }
+    }
+
+
+    public function perfil($id){
+
+        $usuario = Usuario::getById($id);
+        $compras = OrdenCompra::getBy('id_usuario',$id);
+        $this->render('Templates\Layout', 'usuarios/perfil', ['usuario'=>$usuario, 'compras'=>$compras]);
+
     }
 
 

@@ -1,5 +1,5 @@
  
-            <h1>Agregar Usuario</h1>
+            <h1>Nuevo Usuario</h1>
  
 
 

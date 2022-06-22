@@ -2,12 +2,13 @@
 
 namespace controllers;
 
+use core\Controller;
 use \models\Producto;
 use \models\Carrito;
 use \Views\Layout;
 
 
-class HomeController{
+class HomeController extends Controller{
 
     public function index(){
 
@@ -16,7 +17,7 @@ class HomeController{
         //require_once("./views/Home/index.php");
 
        // $context['productos'] = Producto::getAll();        
-       \Render::html('Templates\Layout','/home/index',["titulo"=>$titulo]);
+       $this->render('Templates\Layout','/home/index',["titulo"=>$titulo]);
 
     }
 

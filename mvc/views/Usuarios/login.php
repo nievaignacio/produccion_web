@@ -74,15 +74,19 @@ body {
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input type="checkbox" value="remember-me"> Recordarme en este equipo
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
-  </form>
-</main>
-
-
+    <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
     
+  </form>
+
+  <hr>
+
+  <a href="<?=BASE_URL?>/usuarios/registro" class="w-100 btn btn-lg btn-primary">Registrarme</a>
+
+
+<p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+  </main>  
   </body>
 </html>

@@ -26,7 +26,7 @@ class ProductosController extends Controller
         if (!$_POST) {
 
             //require_once("views/productos/agregar.php");
-            Render::html('Templates\AdminLayout', 'productos/agregar', []);
+            $this->render('Templates\AdminLayout', 'productos/agregar', []);
         } else {
 
             $permitidos = array("image/jpeg", "image/png", "image/gif", "image/jpg");
@@ -65,7 +65,7 @@ class ProductosController extends Controller
 
         if (!$_POST) {
 
-            Render::html('Templates\AdminLayout', 'productos/editar', ["producto"=>$producto]);
+            $this->render('Templates\AdminLayout', 'productos/editar', ["producto"=>$producto]);
 
         } else {
             $producto = new Producto($_POST['id'], $_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['stock'], $producto->imagen);
@@ -102,7 +102,7 @@ class ProductosController extends Controller
 
         //require_once("views/productos/detalle.php");
 
-       Render::html('Templates\Layout', 'productos/detalle', ['producto'=>$producto, 'itemCompra'=>$itemCompra]);
+       $this->render('Templates\Layout', 'productos/detalle', ['producto'=>$producto, 'itemCompra'=>$itemCompra]);
     }
 
 
@@ -144,13 +144,13 @@ class ProductosController extends Controller
                     $resultados = "No se hallaron resultados para la busqueda: ".$nombre;
                 }
 
-                Render::html('Templates\Layout', 'productos/grilla', ['productos'=>$productos, 'resultados'=>$resultados]);
+                $this->render('Templates\Layout', 'productos/grilla', ['productos'=>$productos, 'resultados'=>$resultados]);
 
             }else {
 
                 $productos = Producto::getAll();
 
-                Render::html('Templates\Layout', 'productos/grilla', ['productos'=>$productos]);
+                $this->render('Templates\Layout', 'productos/grilla', ['productos'=>$productos]);
             }
 
         }
@@ -163,7 +163,7 @@ class ProductosController extends Controller
         $enStock = Producto::getInStock();
         $sinStock = Producto::getOutStock();
 
-        Render::html('Templates\AdminLayout', 'productos/estadisticas', ['enStock'=>$enStock,'sinStock'=>$sinStock ]);
+        $this->render('Templates\AdminLayout', 'productos/estadisticas', ['enStock'=>$enStock,'sinStock'=>$sinStock ]);
     }
 
 

@@ -48,8 +48,9 @@ class Layout
                             </div>
 
         <div class="text-end">
-          <a href="<?=BASE_URL?>/admin" class="btn btn-outline-light me-2">Login</button>
+       <!-- /   <a href="<?=BASE_URL?>/admin" class="btn btn-outline-light me-2">Login</button> -->
           <?php
+                            (new \controllers\UsuariosController)->boton();
                             (new \controllers\CarritoController)->boton();
                             ?>
 

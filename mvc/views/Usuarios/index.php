@@ -16,6 +16,7 @@
                     <th>id</th>
                     <th>nombre</th>
                     <th>email</th>
+                    <th>rol</th>
                 </tr>
             </thead>
 
@@ -28,6 +29,7 @@
                         <td><?php echo $usuario->id; ?></td>
                         <td><?php echo $usuario->nombre; ?></td>
                         <td><?php echo $usuario->email; ?></td>
+                        <td><?php echo $usuario->rol; ?></td>
         
                         <td>
                             <a href="./usuarios/eliminar/<?php echo $usuario->id; ?>" class="btn btn-danger">Eliminar</a>

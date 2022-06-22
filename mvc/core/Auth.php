@@ -28,10 +28,21 @@ class Auth
         return;
     }
 
+
+    public static function isAdmin()
+    {
+        if (!isset($_SESSION))
+            session_start();
+         if (!isset($_SESSION['auth']) || $_SESSION['auth']->rol != 'Administrador' ){
+            header("Location: " . BASE_URL. "/usuarios/login");
+         }
+        return;
+    }
+
     public static function getUser(){
         if (!isset($_SESSION))
             session_start();
-        return $_SESSION["auth"];
+        return $_SESSION["auth"] ?? null;
     }
 
 
